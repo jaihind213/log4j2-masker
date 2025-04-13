@@ -12,6 +12,7 @@
 - ⚙️ Plug-and-play integration with Log4j2
 - 🔒 Keeps your logs clean and secure
 - 📦 works with your shaded JAR with all dependencies with a minor tweak to pom.xml
+- unlike other approaches No complex regex to configure log4j with. 
 
 ---
 
