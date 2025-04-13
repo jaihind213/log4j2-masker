@@ -22,7 +22,7 @@ Say you have the following java code
 ```java
 
         Properties configs = new Properties();
-        //We wish to censor these properties
+        //We wish to censor the values of these configuration paramters
         configs.put("db.user", "admin");
         configs.put("db.passwd", "startrek123");
         configs.put("aws.access_key", "@12h7$");
@@ -87,39 +87,59 @@ LogCensor for logger created. enabled: true .options are: [enabled=true]
 ```
 
 The Log censor will mask the senstive word where ever it finds in the log message.
-ex: in our example 'admin' is the username, hence the word 'admin' will censored where ever it appears in the log message.
 
+Ex: in our example 'admin' is the username, hence the word 'admin' will censored where ever it appears in the log message.
 
-## log4j2 support
-
-| log4j2 version | log4j2-masker version |
-|----------------|-----------------------|
-| > 2.20.0       | 2.20.0                |
-| < 2.20.0       | not available         |
 
 ## 📦 Installation
 
-Add the dependency to your `pom.xml`:
+Add the following dependency to your `pom.xml`:
 
 ```xml
+<!-- Make sure to ALSO add the log4j api/core deps to your pom.xml -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-core</artifactId>
+    <version>${set.your.log4j2.version}</version>
+    <scope>compile</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-api</artifactId>
+    <version>${set.your.log4j2.version}</version>
+    <scope>compile</scope>
+</dependency>
+
+<!-- Add the masker dependency -->
 <dependency>
   <groupId>io.github.jaihind213</groupId>
   <artifactId>log4j2-masker</artifactId>
   <version>2.20.0</version>
 </dependency>
+
 ```
-- If you are not using fat jar, add the log4j2-masker jar to your classpath or
+### Adding to your Fat Jar
 
-- If you are using mvn shade plugin in maven, please add the following configuration to shade plugin:
+- If you are not using fat jar, add the log4j2-masker jar to your classpath
 
-For 2.20.0 log4j2 version  add the following
+You will need to add a few transformers to your shade plugin configuration::
 
+- For **Log4j2 versions > 2.20.0**, please refer to the [`pom_gte_log4j2_2_20_0.xml`](./pom_gte_log4j2_2_20_0.xml) for instructions on how to shade the JAR correctly.
+- For the following Log4j2 versions,
+    - `2.20.0`
+    - `2.19.0`
+    - `2.18.0`
+    - `2.17.2`
+    - `2.17.1`
+    - `2.8.1`
+    - `2.8`
+    - `2.7`
+    - `2.6.2`
+    - `2.6.1`
+    - `2.1`
+        - refer to the [`pom_legacy.xml`](./pom_legacy.xml)  on how to shade the JAR correctly.
 
-
-if you are using log4j2 version > 2.20.0 add the following to your pom.xml 
-
-
-## live Examples 
+#### Examples 
 
 1. refer to the unit test in the project.
 2. refer to this project https://github.com/jaihind213/using_log4j2-masker
