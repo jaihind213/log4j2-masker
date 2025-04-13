@@ -162,6 +162,15 @@
                         </goals>
                     </execution>
                 </executions>
+                <configuration>
+                    <!-- RUN gpg - -list-signatures - -keyid-format 0xshort ... LINE 3 has it in hex-->
+                    <keyname>${env.GPG_KEYNAME}</keyname>
+                    <passphraseServerId>${env.GPG_KEYNAME}</passphraseServerId>
+                    <gpgArguments>
+                        <arg>--pinentry-mode</arg>
+                        <arg>loopback</arg>
+                    </gpgArguments>
+                </configuration>
             </plugin>
         </plugins>
     </build>
