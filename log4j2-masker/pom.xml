@@ -4,16 +4,17 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.jaihind213</groupId>
-    <artifactId>log4j2-masker</artifactId>
-    <version>2.20.0</version>
-
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <log4j.version>2.20.0</log4j.version>
     </properties>
+
+    <groupId>io.github.jaihind213</groupId>
+    <artifactId>log4j2-masker</artifactId>
+    <version>${log4j.version}</version>
+
     <dependencies>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -196,6 +197,6 @@
         <url>https://github.com/jaihind213/log4j2-masker</url>
         <connection>scm:git:git://github.com/jaihind213/log4j2-masker.git</connection>
         <developerConnection>scm:git:ssh://github.com:jaihind213/log4j2-masker.git</developerConnection>
-        <tag>main</tag>
+        <tag>${log4j.version}</tag>
     </scm>
 </project>
